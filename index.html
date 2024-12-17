@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML-Квест для начинающих</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        section {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 800px;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        .task {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            border-radius: 5px;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            background-color: #fffae6;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .animate-fade {
+            animation: fadeIn 1.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    <script>
+        const tasks = [
+            { id: 1, question: "<h1>Заголовок страницы</h1>", answer: "<h1>Заголовок страницы</h1>" },
+            { id: 2, question: "<p>Пример абзаца.</p>", answer: "<p>Пример абзаца.</p>" },
+            { id: 3, question: "<img src=\"image.jpg\">", answer: "<img src=\"image.jpg\">" },
+            { id: 4, question: "<a href=\"example.com\">Ссылка</a>", answer: "<a href=\"example.com\">Ссылка</a>" },
+            { id: 5, question: "<ul>\n <li>Пункт 1</li>\n</ul>", answer: "<ul>\n <li>Пункт 1</li>\n</ul>" }
+        ];
+
+        function checkTask(index) {
+            const input = document.getElementById(`task${index}-input`).value.trim();
+            if (input === tasks[index - 1].answer) {
+                document.getElementById(`task${index + 1}`).classList.remove("hidden");
+                alert("Задание выполнено верно! Продолжайте.");
+            } else {
+                alert("Попробуйте еще раз. Проверьте код и повторите.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="animate-fade">
+        <h1>HTML-Квест для начинающих</h1>
+        <p>Выполни задания и изучи основы HTML!</p>
+    </header>
+
+    <section id="task1">
+        <h2>Задание 1: Заголовок</h2>
+        <div class="task highlight">
+            <p><strong>Инструкция:</strong> Используй тег <code>&lt;h1&gt;</code>, чтобы добавить заголовок "Заголовок страницы".</p>
+            <textarea id="task1-input" rows="3" style="width: 100%;"></textarea>
+            <button onclick="checkTask(1)">Проверить</button>
+        </div>
+    </section>
+
+    <section id="task2" class="hidden">
+        <h2>Задание 2: Абзац</h2>
+        <div class="task highlight">
+            <p><strong>Инструкция:</strong> Используй тег <code>&lt;p&gt;</code>, чтобы добавить текст "Пример абзаца."</p>
+            <textarea id="task2-input" rows="3" style="width: 100%;"></textarea>
+            <button onclick="checkTask(2)">Проверить</button>
+        </div>
+    </section>
+
+    <section id="task3" class="hidden">
+        <h2>Задание 3: Изображение</h2>
+        <div class="task highlight">
+            <p><strong>Инструкция:</strong> Используй тег <code>&lt;img&gt;</code>, чтобы добавить изображение с именем "image.jpg".</p>
+            <textarea id="task3-input" rows="3" style="width: 100%;"></textarea>
+            <button onclick="checkTask(3)">Проверить</button>
+        </div>
+    </section>
+
+    <section id="task4" class="hidden">
+        <h2>Задание 4: Ссылка</h2>
+        <div class="task highlight">
+            <p><strong>Инструкция:</strong> Используй тег <code>&lt;a&gt;</code>, чтобы создать ссылку на "example.com" с текстом "Ссылка".</p>
+            <textarea id="task4-input" rows="3" style="width: 100%;"></textarea>
+            <button onclick="checkTask(4)">Проверить</button>
+        </div>
+    </section>
+
+    <section id="task5" class="hidden">
+        <h2>Задание 5: Список</h2>
+        <div class="task highlight">
+            <p><strong>Инструкция:</strong> Создай ненумерованный список с одним элементом "Пункт 1".</p>
+            <textarea id="task5-input" rows="3" style="width: 100%;"></textarea>
+            <button onclick="checkTask(5)">Проверить</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Поздравляем! Изучай HTML и создавай крутые сайты!</p>
+    </footer>
+</body>
+</html>
